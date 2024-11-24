@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul');
-            $table->text('isi');
-            $table->string('image')->nullable(); // Kolom untuk menyimpan path gambar
-            $table->timestamps();
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();  
+            $table->string('username')->unique();  
+            $table->string('email')->unique(); 
+            $table->string('password');  
+            $table->timestamps();  
         });
+        
     }
 
     /**
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('users');
     }
 };
